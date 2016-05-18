@@ -10,11 +10,11 @@ import java.util.List;
 
 /**
  * Repositório de votos.
- * 
+ *
  * @author mauriciofernandesdecastro
  */
 public interface VoteRepository
-	extends JpaRepository<Vote, Serializable> {
+		extends JpaRepository<Vote, Serializable> {
 
 	@Query("select voto.voto "
 			+ "from Vote voto "
