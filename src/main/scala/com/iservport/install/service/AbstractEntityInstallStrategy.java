@@ -143,6 +143,7 @@ public abstract class AbstractEntityInstallStrategy
 		// Root entity
 		Entity rootEntity = new Entity(context, rootEntityAlias);
 		rootEntity.setCity(rootCity);
+		rootEntity.setCityId(rootCity.getId());
 		rootEntity = installEntity(context, rootEntity);
 		
 		// Root user
