@@ -1,0 +1,63 @@
+[#ftl]
+<header class="top-header clearfix" >
+    <!-- Logo -->
+    <div class="logo bg-dark-light" >
+        <a href="#/">
+            <img width="48px;" src="/static/images/logo.png">
+            <span class="ng-binding">iservport</span>
+        </a>
+    </div>
+    <!-- needs to be put after logo to make it work -->
+    <div class="menu-button" data-toggle-off-canvas >
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </div>
+    <div class="top-nav" >
+        <ul class="nav-left list-unstyled hidden-xs">
+            <li>
+                <a href="#/" data-toggle-nav-collapsed-min
+                   class="toggle-min"
+                ><i class="fa fa-bars"></i></a>
+            </li>
+            <li><a href="/root"><i data-href="/api/entity" data-authorized-entity></i></a></li>
+        </ul>
+        <ul class="nav-right pull-right list-unstyled">
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" >
+                    <img class="img-circle img30_30 hidden-xs"
+                         data-ng-src="{{authorizedUser.userImageUrl}}"
+                         data-err-src="/static/images/user/gender64-{{authorizedUser.userGender}}.png">
+                    <span>{{authorizedUser.displayName}}&nbsp;<i class="fa fa-caret-down"></i></span>
+                </a>
+                <ul class="dropdown-menu with-arrow pull-right">
+                    <li>
+                        <a data-ng-click="getProfile(authorizedUser.identityId)">
+                            <i class="glyphicon glyphicon-user"></i>
+                            <span>{{'PERSONAL_DATA' | common}}</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/logout">
+                            <i class="glyphicon glyphicon-log-out"></i>
+                            <span>{{'_EXIT' | common}}</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        [#if categories?seq_contains('Q')]
+        <ul class="nav-right pull-right list-unstyled hidden-xs" >
+            <li>
+                <a data-ng-click="openRequestList()" >
+                    <i class="glyphicon glyphicon-bell small"></i>
+                    <span class="badge" data-ng-if="countAlert>0 || countWarning>0"
+                      data-ng-class="{'badge-danger' : countAlert>0, 'badge-warning':(countAlert==0 && countWarning>0 )}">
+                      {{countAlert>0?countAlert:countWarning}}
+                    </span>
+                </a>
+            </li>
+        </ul>
+        [/#if]
+    </div><!-- top-nav -->
+</header>

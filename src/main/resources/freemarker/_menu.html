@@ -1,0 +1,196 @@
+[#ftl]
+<div class="nav-wrapper">
+    <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 100%;">
+    <ul id="nav"
+        class="nav"
+		data-slim-scroll
+        data-collapse-nav
+        data-highlight-active
+        style="overflow: hidden; width: auto; height: 100%;">
+		<!--
+		 ! Home
+		 !-->
+		<li role="presentation"  > 
+			<a href="/" >
+	        	<i class="fa fa-home"></i>  <!-- {{menu.dashboard}} --><span>Home</span>
+	    	</a>
+		</li>
+		<!--
+		 ! Indicadores -> IndicatorSearchController
+		 !
+		<li >
+			<a data-ng-href="/app/indicator/" >
+	        	<i class="fa fa-home"></i> {{menu.indicators}}</a>
+		</li>-->
+		[#if categories?seq_contains('J')]
+		<!--
+		 ! Atividades
+		 !-->
+		<li data-ng-class="{open: '${baseName}'=='report'}" >
+			<a data-ng-href="/report/" data-ng-show="isAuthorized('PROJECT', 'READ')">
+				<i class="fa fa-thumb-tack"></i> <span>Atividades</span>
+			</a>
+			<a data-ng-hide="isAuthorized('PROJECT', 'READ')" style="color: darkgrey; font-weight: bold;" >
+				<i class="fa fa-thumb-tack"></i> <span>Atividades</span>
+			</a>
+		</li>
+		[/#if]
+		[#if categories?seq_contains('Q')]
+		<!--
+		 ! Ocorrências
+		 !-->
+		<li data-ng-class="{open: '${baseName}'=='request'}" >
+			<a data-ng-href="/request/" data-ng-show="isAuthorized('REQUEST', 'READ')">
+				<i class="glyphicon glyphicon-bell"></i> <span>Ocorrências</span>
+			</a>
+			<a data-ng-hide="isAuthorized('REQUEST', 'READ')" style="color: darkgrey; font-weight: bold;" >
+				<i class="glyphicon glyphicon-bell"></i> <span>Ocorrências</span>
+			</a>
+		</li>
+		[/#if]
+		[#if categories?seq_contains('A')]
+		<!--
+		 ! Planos de ação
+		 !-->
+		<li data-ng-class="{open: '${baseName}'=='action'}" >
+			<a data-ng-href="/action/" data-ng-show="isAuthorized('ACTION', 'READ')">
+	        	<i class="fa fa-tasks"></i> <span>Planos de ação</span>
+			</a>
+			<a data-ng-hide="isAuthorized('ACTION', 'READ')" style="color: darkgrey; font-weight: bold;" >
+	        	<i class="fa fa-tasks"></i> <span>Planos de ação</span>
+			</a>
+		</li>
+		[/#if]
+		[#if categories?seq_contains('P')]
+		<!--
+		 ! Produtos 
+		 ! -->
+		<li data-ng-class="{open: '${baseName}'=='product'}" >
+			<a data-ng-href="/product/" data-ng-show="isAuthorized('PRODUCT', 'READ')">
+	        	<i class="fa fa-barcode"></i> <span>Produtos</span>
+			</a>
+			<a data-ng-hide="isAuthorized('PRODUCT', 'READ')" style="color: darkgrey; font-weight: bold;" >
+	        	<i class="fa fa-barcode"></i> <span>Produtos</span>
+			</a>
+		</li>
+		[#if categories?seq_contains('Y')]
+		<!--
+		 ! Ordens (e produtos)
+		 ! -->
+		<li data-ng-class="{open: '${baseName}'=='order'}" >
+			<a data-ng-href="/order/" data-ng-show="isAuthorized('ORDER', 'READ')">
+	        	<i class="fa fa-cogs"></i> <span>Ordens</span>
+			</a>
+			<a data-ng-hide="isAuthorized('ORDER', 'READ')" style="color: darkgrey; font-weight: bold;" >
+	        	<i class="fa fa-cogs"></i> <span>Ordens</span>
+			</a>
+		</li>
+		[/#if]
+		[/#if]
+		<!--
+		 ! Conteúdo
+		 !-->
+		<li >
+			<a data-ng-href="/content/" data-ng-show="isAuthorized('DOCUMENT', 'READ')">
+	        	<i class="fa fa-book"></i> <span>Conteúdo</span>
+			</a>
+			<a data-ng-hide="isAuthorized('DOCUMENT', 'READ')" style="color: darkgrey; font-weight: bold;" >
+	        	<i class="fa fa-book"></i> <span>Conteúdo</span>
+			</a>
+		</li>
+		[#if categories?seq_contains('I')]
+		<!--
+		 ! Instrumentos
+		 !-->
+		<li >
+			<a data-ng-href="/instrument/" data-ng-show="isAuthorized('INSTRUMENT', 'READ')">
+	        	<i class="fa fa-tachometer"></i> <span>Instrumentos</span>
+			</a>
+			<a data-ng-hide="isAuthorized('INSTRUMENT', 'READ')" style="color: darkgrey; font-weight: bold;" >
+	        	<i class="fa fa-tachometer"></i> <span>Instrumentos</span>
+			</a>
+		</li>
+		[/#if]
+		[#if categories?seq_contains('M')]
+		<!--
+		 ! Manutenção
+		 !-->
+		<li >
+			<a data-ng-href="/resource/" data-ng-show="isAuthorized('MAINTENANCE', 'READ')">
+	        	<i class="fa fa-wrench"></i> <span>Manutenção</span>
+			</a>
+			<a data-ng-hide="isAuthorized('MAINTENANCE', 'READ')" style="color: darkgrey; font-weight: bold;" >
+	        	<i class="fa fa-wrench"></i> <span>Manutenção</span>
+			</a>
+		</li>
+		[/#if]
+		<!--
+		 ! Pessoas 
+		 !-->
+		<li >
+			<a  data-ng-href="/user/" data-ng-show="isAuthorized('USER', 'WRITE')">
+	        	<i class="fi-torsos-all"></i> <span>Pessoas</span>
+			</a>
+			<a data-ng-hide="isAuthorized('USER', 'WRITE')" style="color: darkgrey; font-weight: bold;" >
+	        	<i class="fi-torsos-all"></i> <span>Pessoas</span>
+			</a>
+		</li>
+        [#if categories?seq_contains('C')]
+		<!--
+		 ! Competências
+		 !-->
+		<li >
+			<a data-ng-href="/competence/" data-ng-show="isAuthorized('COMPETENCE', 'READ')">
+				<i class="fa fa-graduation-cap"></i> <span>Competências</span>
+			</a>
+			<a data-ng-hide="isAuthorized('COMPETENCE', 'READ')" style="color: darkgrey; font-weight: bold;" >
+				<i class="fa fa-graduation-cap"></i> <span>Competências</span>
+			</a>
+		</li>
+        [/#if]
+        [#if categories?seq_contains('H')]
+		<!--
+		 ! Segurança e saúde ocupacional
+		 !-->
+		<li >
+			<a data-ng-href="/safety/" data-ng-show="isAuthorized('HEALTH', 'READ')">
+                <i class="fa fa-medkit"></i> <span>Segurança e medicina</span>
+			</a>
+			<a data-ng-hide="isAuthorized('HEALTH', 'READ')" style="color: darkgrey; font-weight: bold;" >
+                <i class="fa fa-medkit"></i> <span>Segurança e medicina</span>
+			</a>
+		</li>
+        [/#if]
+		<!--
+		 ! Contatos
+		 !-->
+		<li >
+			<a  data-ng-href="/partner/" data-ng-show="isAuthorized('PARTNER', 'READ')">
+	        	<i class="fi-address-book"></i> <span>Contatos</span>
+			</a>
+			<a data-ng-hide="isAuthorized('PARTNER', 'READ')" style="color: darkgrey; font-weight: bold;" >
+	        	<i class="fi-address-book"></i> <span>Contatos</span>
+			</a>
+		</li>
+		[#if categories?seq_contains('V')]
+		<!--
+		 ! Volumes
+		 !-->
+		<li >
+			<a data-ng-if="isAuthorized('VOLUME', 'READ') || isAuthorized('ADMIN', 'READ')" data-ng-href="/volume/" >
+				<i class="fa fa-archive"></i> <span>Arquivo</span>
+			</a>
+		</li>
+		[/#if]
+		<!--
+		 ! Categorias
+		 !-->
+		<li >
+			<a data-ng-if="isAuthorized('CATEGORY', 'READ') || isAuthorized('ADMIN', 'READ')" data-ng-href="/category/" >
+				<i class="fa fa-cog"></i> <span>Ajustes</span>
+			</a>
+		</li>
+		
+    </ul>
+	</div>
+</div>
