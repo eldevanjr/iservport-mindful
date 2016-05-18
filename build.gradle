@@ -32,7 +32,6 @@ bootRun {
 task stage {
     dependsOn build
 }
-
 //test.onlyIf { ! Boolean.getBoolean('skip.tests') }
 test.onlyIf { false }
 
